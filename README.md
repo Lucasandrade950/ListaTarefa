@@ -1,50 +1,67 @@
-# Welcome to your Expo app 👋
+# 📝 Minhas Tarefas — To Do List
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App de lista de tarefas feito com **Expo**, **Expo Router** e **TypeScript**, com suporte a tema claro/escuro e armazenamento local.
 
-## Get started
+## ✨ Funcionalidades
 
-1. Install dependencies
+- Adicionar, concluir e excluir tarefas
+- Barra de progresso mostrando quantas tarefas foram concluídas
+- Dados salvos localmente no celular (persistem ao fechar o app)
+- Tema claro e escuro automático, seguindo a configuração do sistema
 
-   ```bash
-   npm install
-   ```
+## 🛠️ Tecnologias e conceitos usados
 
-2. Start the app
+| Tecnologia | Uso no projeto |
+|---|---|
+| **Expo Router** | Navegação entre telas baseada em arquivos (`app/index.tsx`, `app/add-task.tsx`) |
+| **useState** | Guarda a lista de tarefas e o texto sendo digitado |
+| **useFocusEffect** | Recarrega a lista sempre que a tela Home ganha foco |
+| **FlatList** | Renderiza a lista de tarefas de forma otimizada |
+| **TextInput** | Campo de digitação de nova tarefa |
+| **TouchableOpacity** | Botões: concluir, excluir, adicionar, salvar |
+| **AsyncStorage** | Persistência local dos dados no dispositivo |
+| **@expo/vector-icons** | Ícones (check, lixeira, adicionar) |
+| **TypeScript** | Tipagem de dados (`Tarefa`) e funções |
 
-   ```bash
-   npx expo start
-   ```
+## 📁 Estrutura de pastas
 
-In the output, you'll find options to open the app in a
+├── app/
+│ ├── _layout.tsx # Configuração de navegação (Stack) e tema do cabeçalho
+│ ├── index.tsx # Tela inicial — lista de tarefas
+│ └── add-task.tsx # Tela de criação de nova tarefa
+├── constants/
+│ └── theme.ts # Paleta de cores (modo claro e escuro)
+├── utils/
+│ └── taskStorage.ts # Funções de leitura/escrita no AsyncStorage
+└── README.md
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## ▶️ Como rodar o projeto
 
 ```bash
-npm run reset-project
+# instalar dependências
+npm install
+
+# iniciar o servidor de desenvolvimento
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Escaneie o QR code exibido no terminal com o app **Expo Go** (disponível na Play Store / App Store) para abrir no celular.
 
-## Learn more
+## 🎨 Personalização
 
-To learn more about developing your project with Expo, look at the following resources:
+As cores do app ficam centralizadas em `constants/theme.ts`. Para mudar a cor principal, por exemplo, basta alterar o valor de `primaria` nos dois temas (`light` e `dark`).
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📌 Possíveis melhorias futuras
 
-## Join the community
+- Categorias ou prioridades para as tarefas
+- Data/hora de vencimento com notificação
+- Edição do texto de uma tarefa já criada
+- Buscar/filtrar tarefas
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🤝 Sobre o desenvolvimento
+
+Este projeto foi desenvolvido como parte do meu aprendizado em React Native e Expo, com apoio do **Claude (Anthropic)** como assistente de estudo. A IA foi utilizada para explicar conceitos (useState, useEffect, AsyncStorage, navegação com Expo Router), revisar erros de sintaxe e sugerir melhorias de código e design — mas cada linha foi escrita, testada e compreendida por mim durante o processo, incluindo a depuração de problemas reais de configuração do projeto (Metro bundler, estrutura de rotas, TypeScript).
+
+Encaro o uso de IA como uma ferramenta de estudo, semelhante a documentação ou um tutor — que acelera o aprendizado, mas não substitui a prática de escrever, quebrar e consertar código com as próprias mãos.

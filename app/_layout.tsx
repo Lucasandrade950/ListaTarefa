@@ -1,24 +1,21 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { useColorScheme } from 'react-native';
+import { cores } from '../constants/theme';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const esquema = useColorScheme();
+  const tema = cores[esquema === 'dark' ? 'dark' : 'light'];
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack
+      screenOptions={{
+        headerStyle: { backgroundColor: tema.cartao },
+        headerTintColor: tema.texto,
+        contentStyle: { backgroundColor: tema.fundo },
+      }}
+    >
+      <Stack.Screen name="index" options={{ title: 'Minhas Tarefas' }} />
+      <Stack.Screen name="add-task" options={{ title: 'Nova Tarefa', presentation: 'modal' }} />
+    </Stack>
   );
 }
